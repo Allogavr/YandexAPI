@@ -1,11 +1,11 @@
 import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 import pytest
 import httpx
 import tempfile
 import os
 import time
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from src.config.settings import settings
 from src.api.client import YandexDiskClient
 
@@ -36,6 +36,11 @@ def test_text_file():
 
     if os.path.exists(temp_path):
         os.unlink(temp_path)
+
+
+@pytest.fixture(scope="function")
+def unique_folder_name():
+    return f"test_folder_{int(time.time())}"
 
 
 @pytest.fixture(scope="function")
