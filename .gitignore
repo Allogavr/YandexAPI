@@ -26,6 +26,7 @@ dist/
 *.log
 *.tmp
 *.bak
+*.pid
 
 htmlcov/
 .coverage
